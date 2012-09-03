@@ -1,7 +1,9 @@
 logger = null
+client = null
 
-exports.configure = (log) ->
+exports.configure = (log, cli) ->
   logger = log
+  client = cli
 
 exports.index = (req, res) ->
   logger.find {}, (e, data) ->
@@ -34,6 +36,15 @@ exports.channel = (req, res) ->
       crumb: "/log/#{server}"
       title: "Log #{server}##{channel}"
       items: data
+
+exports.chjoin = (req, res) ->
+  channel = req.param 'channel' || no
+  if channel
+    client.join "##{channel}"
+    res.writeHead 200, 'Content-Type': 'application/json'
+    res.end()
+  else
+    res.render 'join'
 
 exports.failed = (req, res) ->
   res.status 404

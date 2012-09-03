@@ -107,7 +107,7 @@ async.series [
     app      = express()
 
     app.configure ->
-      app.set 'port', process.env.PORT || 3000
+      app.set 'port', process.env.PORT || program.myport
       app.set 'views', "#{__dirname}/views"
       app.set 'view engine', 'jade'
       app.use express.favicon()
@@ -124,10 +124,12 @@ async.series [
     app.configure 'development', ->
       app.use express.errorHandler()
 
-    routes.configure log
+    routes.configure log, cli
     app.get '/', routes.index
     app.get '/log/:server', routes.server
     app.get '/log/:server/:channel', routes.channel
+    app.get '/join', routes.chjoin
+    app.post '/join/:channel', routes.chjoin
 
     http.createServer(app).listen app.get('port'), ->
      console.log "\n\n"

@@ -5,6 +5,7 @@ block content
   p.space
     if crumb
       a(href=crumb) ← BACK
+    a(href='/join') JOIN
   if title.substr(0,3) != 'Log'
     for item in items
       p: a(href=item)= _.last(item.split('/'))
