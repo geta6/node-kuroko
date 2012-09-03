@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= title
+  p.space
+    if crumb
+      a(href=crumb) ← BACK
+  if title.substr(0,3) != 'Log'
+    for item in items
+      p: a(href=item)= _.last(item.split('/'))
+  else
+    for item in items
+      .line
+        span.time= item.time
+        span.user= item.nickname
+        span :
+        span.message= item.message
+    .page
+      if page > 1
+        a(href='?page=#{page-1}'): span.back ← previous
+      span page #{page}
+      if max+2 == items.length
+        a(href='?page=#{page+1}'): span.next nextpage →
+    .maxp
+      form(action='', method='get')
+        input(type='hidden', name='page', value=page)
+        span per page
+        input(type='number', name='max', value=max)
+        span messages

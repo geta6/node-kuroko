@@ -1,0 +1,28 @@
+{
+  "name": "kuroko",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "EXEC=`ls | grep .coffee` && NODE_ENV=production forever start -c coffee ./$EXEC",
+    "stop": "EXEC=`ls | grep .coffee` && forever stop $EXEC",
+    "test": "EXEC=`ls | grep .coffee` && coffee $EXEC"
+  },
+  "main": "kuroko",
+  "bin": {
+    "kuroko": "./bin/kuroko"
+  },
+  "dependencies": {
+    "underscore": "*",
+    "coffee-script": "*",
+    "moment": "*",
+    "colors": "*",
+    "commander": "*",
+    "irc": "*",
+    "async": "*",
+    "mongoose": "*",
+    "express": "*",
+    "jade": "*",
+    "less-middleware": "*",
+    "coffee-middleware": "git://github.com/geta6/express-coffee.git"
+  }
+}
