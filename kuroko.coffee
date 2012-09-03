@@ -87,6 +87,9 @@ async.series [
         else
           status[ch] = no
           cli.say ch, "まだログとってないですの"
+      else if msg.match /(あどれす|アドレス).*(教|おしえ|おせー)/
+        cli.say ch, 'アドレスですの'
+        cli.say ch, "http://kuroko.cago.in/log/#{program.server}:#{program.port}/#{ch.substring 1}"
       else if status[ch]
         (new log
           server : "#{program.server}:#{program.port}"
