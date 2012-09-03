@@ -87,8 +87,6 @@ async.series [
         else
           status[ch] = no
           cli.say ch, "まだログとってないですの"
-      else if msg.match new RegExp "#{program.name}", 'g'
-        cli.say ch, 'はいですの'
       else if status[ch]
         (new log
           server : "#{program.server}:#{program.port}"
@@ -97,6 +95,9 @@ async.series [
           message: msg
           time: new Date()
         ).save()
+
+      if msg.match new RegExp "#{program.name}", 'g'
+        cli.say ch, 'はいですの'
 
     cb null
 
