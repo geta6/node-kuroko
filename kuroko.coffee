@@ -31,6 +31,7 @@ log = mongoose.model 'logs', LogSchema
 
 program
   .version((require './package.json').vesion)
+  .option('-a, --address <address>', 'specify your kuroko server address', String, 'localhost:1337')
   .option('-m, --myport <myport>', 'specify the viewer port', Number, 1337)
   .option('-s, --server <address>', 'specify the server', String)
   .option('-p, --port <port>', 'specify the port [6667]', Number, 6667)
@@ -89,7 +90,7 @@ async.series [
           cli.say ch, "まだログとってないですの"
       else if msg.match /(あどれす|アドレス).*(教|おしえ|おせー)/
         cli.say ch, 'アドレスですの'
-        cli.say ch, "http://kuroko.cago.in/log/#{program.server}:#{program.port}/#{ch.substring 1}"
+        cli.say ch, "http://#{program.address}/log/#{program.server}:#{program.port}/#{ch.substring 1}"
       else if status[ch]
         (new log
           server : "#{program.server}:#{program.port}"
