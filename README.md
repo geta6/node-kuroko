@@ -1,40 +1,41 @@
-# city
+# くろこ
 
-template for node.js
+* node.jsで書かれた超簡易IRCログボット+ビューワーです。
 
-## module
+# ぷろだくしょん実行
 
-* `less`
-* `coffee-script`
-* `underscore`
-* `jade`
-* `express`
+## 前提
 
-## require for production
+* git
+* nodejs
+* npm
+* mongodb
 
-* `npm -g install forever`
-
-## initialize
+## こまんど
 
 ```
+git clone https://github.com/geta6/node-kuroko
+cd kuroko
+npm -g install coffee-script forever
 npm install
-npm -g install forever coffee-script
-```
-
-## execute
-### development
-
-```
-coffee ./application.coffee
-```
-
-### production
-
-3 scripts defined.
-
-```
 npm start
+```
+
+## ていし・さいきどう
+
+```
 npm stop
 npm restart
 ```
+
+# でばっぐ
+
+* testコマンドに割り当てました〜＾O＾ノ
+```
+npm test
+```
+
+# どうやって使うか
+
+`kuroko --help` してください
 

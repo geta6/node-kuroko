@@ -31,6 +31,7 @@ log = mongoose.model 'logs', LogSchema
 
 program
   .version((require './package.json').vesion)
+  .option('-m, --myport <myport>', 'specify the viewer port', Number, 1337)
   .option('-s, --server <address>', 'specify the server', String)
   .option('-p, --port <port>', 'specify the port [6667]', Number, 6667)
   .option('-c, --channels <channelA, channelB, ...>', 'specify channels without #', String)
@@ -130,6 +131,6 @@ async.series [
 
     http.createServer(app).listen app.get('port'), ->
      console.log "\n\n"
-     console.log "Express server listening on port #{app.get 'port'}"
+     console.log "Kuroko listening on port #{app.get 'port'}"
     cb null
 ]
